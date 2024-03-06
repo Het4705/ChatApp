@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="x icon" href="./Images/Green Minimalist Chat Logo Design.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./javascripts/script.js"></script>
+</head>
+
+<body>
+    <header id="nav-bar">
+        <table>
+            <tbody>
+                <td>
+                    <h1 id="heading">Chat</h1>
+                </td>
+                <td>
+                    <img src="./Images/Green Minimalist Chat Logo Design.png" height="50px" alt="logo" srcset="">
+                </td>
+                <td>
+                    <h1 id="heading">Global</h1>
+                </td>
+            </tbody>
+        </table>
+
+    </header>
+    <h3 id="uname-display"></h3>
+    <hr>
+    <br>
+
+    <div id="info" style="text-align: center; margin-top: 50px;">
+        <h2 style="margin-bottom: 10px;">Please Enter Your Name:</h2>
+        <input type="text" id="uname" placeholder="e.g., Ram" required
+            style="padding: 8px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc;">
+        <br><br>
+        <button onclick="getName()" id="enter-chatapp-btn"
+            >Enter
+            Chat App</button>
+        <br>
+        <br>
+        <div id="credits" style="color: #999;">
+            Made By | <a target="_blank" id="credit-name"  href="https://www.linkedin.com/in/het-patel-7ba27924b">Het Patel</a>
+        </div>
+        <p style="color: #999">Let's Connect</p>
+        <div id="icons">
+            <a target="_blank" href="https://www.linkedin.com/in/het-patel-7ba27924b" target="_blank" style="color: #6cc4f4;">
+                <img src="images/linkedin.png" height="25px" alt="LinkedIn Icon">
+            </a>
+            <a target="_blank" href="https://www.instagram.com/patelhet_4705" target="_blank" style="color: #6cc4f4;">
+                <img src="images/instagram.png" height="25px" alt="Insta Icon">
+            </a>
+            <a target="_blank" href="https://github.com/Het4705" target="_blank" style="color: #6cc4f4;">
+                <img src="images/github.png" height="25px" alt="Insta Icon">
+            </a>
+            <a target="_blank" href="https://leetcode.com/Patel_Het/" target="_blank" style="color: #6cc4f4;">
+                <img src="images/leetcode.png" height="25px" alt="Insta Icon">
+            </a>
+        </div>
+    </div>
+
+
+    <div id="main-box">
+
+        <p id="p1">Chat Screen</p>
+        <div id="Messages">
+
+        </div>
+
+        <br>
+        <div id="send-message">
+
+            <input id="message" type="text" placeholder="enter message">
+            <button id="sendBtn">send</button>
+        </div>
+        <br>
+        <div id="credits" style="color: #999;">
+            Made By | <a target="_blank" style="text-decoration: none;text-decoration: none;
+            color: #DDF2FD;" href="https://www.linkedin.com/in/het-patel-7ba27924b" >Het Patel</a>
+        </div>
+    </div>
+
+
+    <!-- ^  Script Section   -->
+
+    <!-- this below line will provide a script to this client -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var name = "Mehman"
+
+        getName = () => {
+            document.getElementById("main-box").style.display = "flex";
+            name = document.getElementById("uname").value;
+            document.getElementById("info").style.display = "none";
+            document.getElementById("uname-display").innerText = "Welcome " + name;
+
+        };
+        const socket = io();
+        const sendBtn = document.getElementById('sendBtn')
+        const messageInput = document.getElementById('message')
+
+        // Get the message container
+        const messageContainer = document.getElementById('Messages');
+
+        // Function to scroll the message container to the bottom
+        function scrollMessageContainerToBottom() {
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        // Event listener for new messages
+        socket.on("message", (message) => {
+            if (name != message[1]) {
+                html = "<span id='other' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></p>";
+            } else {
+                html = "<span id='own' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></p>";
+            }
+            messageContainer.innerHTML += html;
+            // Scroll to the bottom after adding a new message
+            scrollMessageContainerToBottom();
+        });
+
+
+        sendBtn.addEventListener("click", (e) => {
+            const message = [messageInput.value, name];
+            socket.emit("user-msg", message);
+        })
+
+        function handleKeyPress(event) {
+            // Check if the pressed key is Enter (key code 13)
+            if (event.keyCode === 13) {
+                // Trigger the click event of the button
+                document.getElementById("sendBtn").click();
+            }
+        }
+
+        // Add event listener to the input field
+        document.getElementById("message").addEventListener("keypress", handleKeyPress);
+    </script>
+</body>
+
+</html>

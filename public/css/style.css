@@ -1,0 +1,131 @@
+
+#uname{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-box {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#nav-bar
+{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+#message{
+    border-radius: 4px 0px 0px 4px;
+}
+#message:hover{
+    border: 2px solid goldenrod;
+    box-shadow: 0px 0px 5px goldenrod;
+
+}
+#send-message {
+    display: flex;
+}
+
+#other {
+    color: #a978e6;
+}
+
+#user-message {
+    color: #63e78d;
+}
+#own{ 
+    color: #e678a0;
+}
+
+#Messages {
+    height: 50vh;
+    width: 50vw;
+    border-radius: 2%;
+    background-color: #1e1e1e;
+    color: aliceblue;
+    overflow: auto;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+ #p1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: palevioletred;
+    font-size: larger;
+    padding: 10px;
+}
+
+body {
+    background-color: #000000;
+    color: white;
+}
+
+#heading {
+    font-family: "Madimi One", sans-serif;
+    text-align: center;
+    font-size: xxx-large;
+    margin: 0px;
+}
+
+#sendBtn {
+    background-color: #bb86fc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 0px 4px 4px 0px;
+}
+#uname-display{
+    color: #efc89f;
+    margin: 0px;
+    text-align: center;
+}
+#sendBtn:hover {
+    background-color: #a978e6;
+}
+#info{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 2%;
+    background-color: #1e1e1e;
+    color: aliceblue;
+    overflow: auto;
+    padding: 10px;
+    margin: 0 auto;
+}
+#icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+#credit-name{
+    text-decoration: none;text-decoration: none;
+    color: #DDF2FD;
+}
+#credit-name:hover{
+    text-decoration: none;text-decoration: none;
+    color: #3ded3a;
+}
+
+
+#icons a:hover{
+      height: 30px;
+     
+     box-shadow: 1px 1px 12px aqua;
+     border-radius: 30%;
+    
+}
+#enter-chatapp-btn{
+    padding: 10px 20px; font-size: 16px; background-color: palevioletred; color: #fff; border: none; border-radius: 5px; cursor: pointer;
+}
+#enter-chatapp-btn:hover{
+      background-color: rgb(233, 86, 135);
+      color: black;
+}
