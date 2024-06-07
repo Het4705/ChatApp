@@ -163,19 +163,23 @@ body {
 }
 
 #info:hover {
+    display: flex;
     box-shadow: 0px 0px 10px #32cd32; /* Highlight effect */
 }
 
 /* Icons section */
 #icons {
     display: flex;
+    justify-content: center;
+    align-items: center;
     justify-content: space-evenly;
+    transition: box-shadow 0.3s ease-in;
 }
 
 #icons a:hover {
-    height: 30px;
-    box-shadow: 1px 1px 12px #32cd32; /* Bright green shadow */
-    border-radius: 50%; /* Rounded edges */
+    /* height: 30px; */
+    filter: drop-shadow(0px 0px 4px #022d13); /* Bright green shadow */
+    /* border-radius: 50%; Rounded edges */
 }
 
 /* Credit name link */
