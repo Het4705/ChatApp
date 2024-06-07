@@ -29,6 +29,9 @@
         </table>
 
     </header>
+    <!-- Active Users Count Section -->
+
+
     <h3 id="uname-display"></h3>
     <!-- <hr> -->
     <br>
@@ -71,7 +74,9 @@
 
     <div id="main-box">
 
-        <p id="p1">Chat Screen</p>
+        <p id="active-users-count">
+            Active Users: <span id="user-count">0</span>
+        </p>
         <div id="Messages">
 
         </div>
@@ -90,12 +95,13 @@
     </div>
 
 
+
     <!-- ^  Script Section   -->
 
     <!-- this below line will provide a script to this client -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var name = "Mehman"
+        var name = "Mehman";
 
         getName = () => {
             document.getElementById("main-box").style.display = "flex";
@@ -103,48 +109,51 @@
             document.getElementById("info").style.display = "none";
             document.getElementById("uname-display").innerText = "Welcome " + name;
 
+            // Send the user's name to the server
+            socket.emit('new-user', name);
         };
+
         const socket = io();
-        const sendBtn = document.getElementById('sendBtn')
-        const messageInput = document.getElementById('message')
-
-        // Get the message container
+        const sendBtn = document.getElementById('sendBtn');
+        const messageInput = document.getElementById('message');
         const messageContainer = document.getElementById('Messages');
+        const userCount = document.getElementById('user-count'); // For active users count
 
-        // Function to scroll the message container to the bottom
         function scrollMessageContainerToBottom() {
             messageContainer.scrollTop = messageContainer.scrollHeight;
         }
 
-        // Event listener for new messages
         socket.on("message", (message) => {
-            if (name != message[1]) {
-                html = "<div id='rightSide'><div id='commonMessageArea'><span id='other' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></div></div>";
+            let html;
+            if (name !== message[1]) {
+                html = "<div id='rightSide'><div id='commonMessageArea'><span id='other'><b>" + message[1] + "</b></span> : <span id='user-message'>" + message[0] + "</span></div></div>";
             } else {
-                html = "<div id = 'leftSide' > <div id='commonMessageArea'></b>  <span id='own-message' '> " + message[0] + "</span></div></div>";
+                html = "<div id='leftSide'><div id='commonMessageArea'><span id='own-message'>" + message[0] + "</span></div></div>";
             }
             messageContainer.innerHTML += html;
-            // Scroll to the bottom after adding a new message
             scrollMessageContainerToBottom();
         });
-
 
         sendBtn.addEventListener("click", (e) => {
             const message = [messageInput.value, name];
             socket.emit("user-msg", message);
-        })
+            messageInput.value = ''; // Clear the input field after sending
+        });
 
-        function handleKeyPress(event) {
-            // Check if the pressed key is Enter (key code 13)
+        document.getElementById("message").addEventListener("keypress", (event) => {
             if (event.keyCode === 13) {
-                // Trigger the click event of the button
                 document.getElementById("sendBtn").click();
             }
-        }
+        });
 
-        // Add event listener to the input field
-        document.getElementById("message").addEventListener("keypress", handleKeyPress);
+        // Listen for updates to the user count from the server
+        console.log("here")
+        socket.on('update-user-count', (count) => {
+            console.log(count)
+            userCount.textContent = count; // Update the displayed count
+        });
     </script>
+
 </body>
 
 </html>

@@ -209,3 +209,12 @@ body {
     background-color: #228B22; /* Forest green */
     color: #e0f2e0; /* Light green text */
 }
+#active-users-count {
+    /* Adjust the right position as needed */
+    background-color: rgba(246, 246, 246, 0.463) ;
+    backdrop-filter: blur(3px);
+    padding: 5px; /* Padding for the element */
+    border-radius: 5px; /* Border radius for rounded corners */
+    /* box-shadow: 0 0 10px rgba(, 0, 0, 0.1); Optional: Add a box shadow for a nice effect */
+    z-index: 1000; /* Ensure the element appears above other content */
+}
