@@ -21,9 +21,7 @@
                 <td>
                     <h1 id="heading">Chat</h1>
                 </td>
-                <td>
-                    <img src="./Images/Green Minimalist Chat Logo Design.png" height="50px" alt="logo" srcset="">
-                </td>
+            
                 <td>
                     <h1 id="heading">Global</h1>
                 </td>
@@ -32,7 +30,7 @@
 
     </header>
     <h3 id="uname-display"></h3>
-    <hr>
+    <!-- <hr> -->
     <br>
 
     <div id="info" style="text-align: center; margin-top: 50px;">
@@ -40,24 +38,25 @@
         <input type="text" id="uname" placeholder="e.g., Ram" required
             style="padding: 8px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc;">
         <br><br>
-        <button onclick="getName()" id="enter-chatapp-btn"
-            >Enter
+        <button onclick="getName()" id="enter-chatapp-btn">Enter
             Chat App</button>
         <br>
         <br>
         <div id="credits" style="color: #999;">
-            Made By | <a target="_blank" id="credit-name"  href="https://www.linkedin.com/in/het-patel-7ba27924b">Het Patel</a>
+            Made By | <a target="_blank" id="credit-name" href="https://www.linkedin.com/in/het-patel-7ba27924b">Het
+                Patel</a>
         </div>
         <p style="color: #999">Let's Connect</p>
         <div id="icons">
-            <a target="_blank" href="https://www.linkedin.com/in/het-patel-7ba27924b" target="_blank" style="color: #6cc4f4;">
+            <a target="_blank" href="https://www.linkedin.com/in/het-patel-7ba27924b" target="_blank"
+                style="color: #6cc4f4;">
                 <img src="images/linkedin.png" height="25px" alt="LinkedIn Icon">
             </a>
             <a target="_blank" href="https://www.instagram.com/patelhet_4705" target="_blank" style="color: #6cc4f4;">
                 <img src="images/instagram.png" height="25px" alt="Insta Icon">
             </a>
             <a target="_blank" href="https://github.com/Het4705" target="_blank" style="color: #6cc4f4;">
-                <img src="images/github.png" height="25px" alt="Insta Icon">
+                <img src="images/github.png" height="35px" alt="Insta Icon">
             </a>
             <a target="_blank" href="https://leetcode.com/Patel_Het/" target="_blank" style="color: #6cc4f4;">
                 <img src="images/leetcode.png" height="25px" alt="Insta Icon">
@@ -80,9 +79,9 @@
             <button id="sendBtn">send</button>
         </div>
         <br>
-        <div id="credits" style="color: #999;">
+        <div id="credits" style="color: #080000;">
             Made By | <a target="_blank" style="text-decoration: none;text-decoration: none;
-            color: #DDF2FD;" href="https://www.linkedin.com/in/het-patel-7ba27924b" >Het Patel</a>
+            color:white;" href="https://www.linkedin.com/in/het-patel-7ba27924b">Het Patel</a>
         </div>
     </div>
 
@@ -116,9 +115,9 @@
         // Event listener for new messages
         socket.on("message", (message) => {
             if (name != message[1]) {
-                html = "<span id='other' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></p>";
+                html = "<div id='rightSide'><div id='commonMessageArea'><span id='other' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></div></div>";
             } else {
-                html = "<span id='own' ><b>" + message[1] + "</span></b> : <span id='user-message' '> " + message[0] + "</span></p>";
+                html = "<div id = 'leftSide' > <div id='commonMessageArea'></b>  <span id='own-message' '> " + message[0] + "</span></div></div>";
             }
             messageContainer.innerHTML += html;
             // Scroll to the bottom after adding a new message

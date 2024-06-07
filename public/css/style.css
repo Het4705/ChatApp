@@ -1,131 +1,207 @@
+/* Base styles for the entire body */
+body {
+    background-color: #b7f3b7; /* Light leafy green background */
+    color: #2e2e2e; /* Dark grey text for good contrast */
+    font-family: "Verdana", sans-serif; /* Clean, easy-to-read font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #9bec9b 0%, #05503d 100%); /* Soft gradient from light green to pale green */
+}
 
-#uname{
+/* Main heading */
+#heading {
+    font-family: "Georgia", serif; /* Elegant serif font */
+    font-size: 3em;
+    color: #c8e8c8; /* Forest green */
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: grab;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.532);
+    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; /* Smooth transition for transform and color */
+}
+
+#heading:hover {
+    transform: translate(10px, 10px); /* Smaller and more subtle movement for smoother visual effect */
+    color: #9fd89f; /* Slightly change color on hover */
+}
+/* Username display */
+#uname {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#uname-display {
+    color: #f6fff6; /* Dark green */
+    font-size: 1.5em;
+    margin: 0px;
+    text-align: center;
+    text-transform: capitalize;
+    
+}
+
+
+/* Main box */
 #main-box {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#nav-bar
-{
-    align-items: center;
+
+/* Navigation bar */
+#nav-bar {
     display: flex;
     justify-content: center;
-}
-#message{
-    border-radius: 4px 0px 0px 4px;
-}
-#message:hover{
-    border: 2px solid goldenrod;
-    box-shadow: 0px 0px 5px goldenrod;
-
-}
-#send-message {
-    display: flex;
+    align-items: center;
 }
 
-#other {
-    color: #a978e6;
-}
-
-#user-message {
-    color: #63e78d;
-}
-#own{ 
-    color: #e678a0;
-}
-
+/* Messages container */
 #Messages {
     height: 50vh;
     width: 50vw;
-    border-radius: 2%;
-    background-color: #1e1e1e;
-    color: aliceblue;
+    border-radius: 10px;
+    background: #d4edda; /* Light green background */
+    border: 1px solid #98fb98; /* Pale green border */
+    color: #2e2e2e; /* Dark grey text */
     overflow: auto;
-    padding: 10px;
+    padding: 20px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
- #p1 {
-    position: relative;
-    top: 0;
-    left: 0;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: palevioletred;
-    font-size: larger;
+/* Individual message areas */
+#leftSide,
+#rightSide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#rightSide {
+    justify-content: flex-start;
+}
+
+/* Messages */
+#user-message {
+    background-color: #98fb98; /* Pale green */
+    color: #2e2e2e; /* Dark grey text */
+    width: 60%;
     padding: 10px;
+    border-radius: 10px 10px 0px 10px;
 }
 
-body {
-    background-color: #000000;
-    color: white;
+#own-message {
+    background-color: #66cdaa; /* Medium aquamarine */
+    color: #2e2e2e; /* Dark grey text */
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0px;
+    margin: 5px 0;
 }
 
-#heading {
-    font-family: "Madimi One", sans-serif;
-    text-align: center;
-    font-size: xxx-large;
-    margin: 0px;
+/* Message box and button */
+#send-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#message {
+    border-radius: 4px 0px 0px 4px;
+    padding: 8px;
+    width: 70%;
+    border: 1px solid #32cd32; /* Lime green border */
+    outline: none;
+    background: #f0fff0; /* Light honeydew background */
+    color: #2e2e2e; /* Dark grey text */
+    transition: border 0.3s ease;
+}
+
+#message:hover {
+    border: 2px solid #228B22; /* Forest green */
+    box-shadow: 0px 0px 5px #228B22; /* Soft green glow */
 }
 
 #sendBtn {
-    background-color: #bb86fc;
+    background-color: #32cd32; /* Lime green */
     color: white;
     border: none;
     padding: 8px 16px;
     cursor: pointer;
     border-radius: 0px 4px 4px 0px;
+    transition: background-color 0.3s ease;
 }
-#uname-display{
-    color: #efc89f;
-    margin: 0px;
-    text-align: center;
-}
+
 #sendBtn:hover {
-    background-color: #a978e6;
+    background-color: #228B22; /* Darker green */
 }
-#info{
+
+/* Additional info area */
+#info {
     display: flex;
     flex-direction: column;
     height: 50vh;
     width: 50vw;
-    border-radius: 2%;
-    background-color: #1e1e1e;
-    color: aliceblue;
+    border-radius: 10px;
+    background-color: #e0f2e0; /* Very light green */
+    color: #2e2e2e; /* Dark grey text */
     overflow: auto;
-    padding: 10px;
-    margin: 0 auto;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #98fb98; /* Pale green border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    transition: box-shadow 0.3s ease-in;
 }
-#icons{
+
+#info:hover {
+    box-shadow: 0px 0px 10px #32cd32; /* Highlight effect */
+}
+
+/* Icons section */
+#icons {
     display: flex;
     justify-content: space-evenly;
 }
-#credit-name{
-    text-decoration: none;text-decoration: none;
-    color: #DDF2FD;
-}
-#credit-name:hover{
-    text-decoration: none;text-decoration: none;
-    color: #3ded3a;
+
+#icons a:hover {
+    height: 30px;
+    box-shadow: 1px 1px 12px #32cd32; /* Bright green shadow */
+    border-radius: 50%; /* Rounded edges */
 }
 
+/* Credit name link */
+#credit-name {
+    text-decoration: none;
+    color: #006400; /* Dark green */
+}
 
-#icons a:hover{
-      height: 30px;
-     
-     box-shadow: 1px 1px 12px aqua;
-     border-radius: 30%;
-    
+#credit-name:hover {
+    text-decoration: none;
+    color: #228B22; /* Forest green */
 }
-#enter-chatapp-btn{
-    padding: 10px 20px; font-size: 16px; background-color: palevioletred; color: #fff; border: none; border-radius: 5px; cursor: pointer;
+
+/* Enter chat button */
+#enter-chatapp-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #32cd32; /* Lime green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-#enter-chatapp-btn:hover{
-      background-color: rgb(233, 86, 135);
-      color: black;
+
+#enter-chatapp-btn:hover {
+    background-color: #228B22; /* Forest green */
+    color: #e0f2e0; /* Light green text */
 }

@@ -26,4 +26,4 @@ io.on("connection",(socket)=>{  //socket==client
 
 server.listen(9000,()=>{
     console.log(`server started at port 9000`)
-})
+}) 
