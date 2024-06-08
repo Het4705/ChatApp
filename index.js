@@ -8,18 +8,25 @@ const io = new Server(server);
 
 app.use(express.static(path.resolve("./public")));
 app.get("/", (req, res) => {
-    return res.sendFile(path.resolve("./public/index.html")); // Use path.resolve for consistent file path
+    return res.sendFile(path.resolve("./public/index.html"));
 });
 
-let activeUserCount = 0; // To store the number of active users
+let userCount = 0;
+let activeUsers = {}; // To store the active users and their names
 
 io.on("connection", (socket) => {
     const clientIPAddress = socket.handshake.address;
     console.log(`New user connected from IP address: ${clientIPAddress}`);
-    activeUserCount++; // Increment the active user count
+    
+    // Increment the user count
+    userCount++;
+    io.emit('update-user-count', userCount);
 
-    // Emit the updated active user count to all clients
-    io.emit('update-user-count', activeUserCount);
+    // Handle setting the username
+    socket.on('set-username', (username) => {
+        activeUsers[socket.id] = { username, ip: clientIPAddress };
+        io.emit('update-user-list', Object.values(activeUsers));
+    });
 
     // Handle user messages
     socket.on("user-msg", (message) => {
@@ -29,9 +36,14 @@ io.on("connection", (socket) => {
 
     // Handle user disconnection
     socket.on("disconnect", () => {
-        console.log("User disconnected");
-        activeUserCount--; // Decrement the active user count
-        io.emit('update-user-count', activeUserCount); // Broadcast the updated user count
+        // Decrement the user count
+        userCount--;
+        io.emit("update-user-count", userCount);
+        console.log(`User ${activeUsers[socket.id]?.username || 'unknown'} disconnected`);
+        
+        // Remove the user from the active users list
+        delete activeUsers[socket.id];
+        io.emit('update-user-list', Object.values(activeUsers));
     });
 });
 

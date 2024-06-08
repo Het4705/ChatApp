@@ -1,7 +1,7 @@
 /* Base styles for the entire body */
 body {
-    background-color: #b7f3b7; /* Light leafy green background */
-    color: #2e2e2e; /* Dark grey text for good contrast */
+    background-color: #b3d9ff; /* Light pastel blue background */
+    color: #4b6179; /* Dark blue text for good contrast */
     font-family: "Verdana", sans-serif; /* Clean, easy-to-read font */
     margin: 0;
     padding: 0;
@@ -10,25 +10,33 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(120deg, #9bec9b 0%, #05503d 100%); /* Soft gradient from light green to pale green */
+    /* background-image: url("../"); */
+    background: linear-gradient(120deg, #e0f3ff 0%, #b3d9ff 100%); Soft gradient from very light blue to pastel blue
 }
 
-/* Main heading */
 #heading {
-    font-family: "Georgia", serif; /* Elegant serif font */
+    font-family: "Georgia" , serif; /* Elegant serif font */
     font-size: 3em;
-    color: #c8e8c8; /* Forest green */
+    color: #5ca0d3; /* Pastel blue */
     text-align: center;
     margin-bottom: 20px;
     cursor: grab;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.532);
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); /* Softer shadow for subtle effect */
     transition: transform 0.5s ease-in-out, color 0.5s ease-in-out; /* Smooth transition for transform and color */
+}
+
+#other {
+    color: #4b6179; /* Dark blue */
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    margin-left: 2px;
 }
 
 #heading:hover {
     transform: translate(10px, 10px); /* Smaller and more subtle movement for smoother visual effect */
-    color: #9fd89f; /* Slightly change color on hover */
+    color: #8ac7e8; /* Slightly change color on hover */
 }
+
 /* Username display */
 #uname {
     display: flex;
@@ -37,14 +45,12 @@ body {
 }
 
 #uname-display {
-    color: #f6fff6; /* Dark green */
+    color: #4b6179; /* Dark blue */
     font-size: 1.5em;
     margin: 0px;
     text-align: center;
     text-transform: capitalize;
-    
 }
-
 
 /* Main box */
 #main-box {
@@ -66,15 +72,15 @@ body {
     height: 50vh;
     width: 50vw;
     border-radius: 10px;
-    background: #d4edda; /* Light green background */
-    border: 1px solid #98fb98; /* Pale green border */
-    color: #2e2e2e; /* Dark grey text */
+    background: #e0f3ff; /* Very light blue background */
+    border: 1px solid #8ac7e8; /* Soft blue border */
+    color: #4b6179; /* Dark blue text */
     overflow: auto;
     padding: 20px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
 }
 
 /* Individual message areas */
@@ -83,7 +89,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
 }
 
 #rightSide {
@@ -92,19 +98,17 @@ body {
 
 /* Messages */
 #user-message {
-    background-color: #98fb98; /* Pale green */
-    color: #2e2e2e; /* Dark grey text */
-    width: 60%;
+    background-color: #d0ebff; /* Pale pastel blue */
+    color: #5f7b99; /* Dark blue text */
     padding: 10px;
-    border-radius: 10px 10px 0px 10px;
+    border-radius: 10px 10px 10px 0px;
 }
 
 #own-message {
-    background-color: #66cdaa; /* Medium aquamarine */
-    color: #2e2e2e; /* Dark grey text */
-    width: 60%;
+    background-color: #8ac7e8; /* Soft blue */
+    color: #4b6179; /* Dark blue text */
     padding: 10px;
-    border-radius: 10px 10px 10px 0px;
+    border-radius: 10px 10px 0px 10px;
     margin: 5px 0;
 }
 
@@ -119,20 +123,20 @@ body {
     border-radius: 4px 0px 0px 4px;
     padding: 8px;
     width: 70%;
-    border: 1px solid #32cd32; /* Lime green border */
+    border: 1px solid #8ac7e8; /* Soft blue border */
     outline: none;
-    background: #f0fff0; /* Light honeydew background */
-    color: #2e2e2e; /* Dark grey text */
+    background: #e0f3ff; /* Very light blue background */
+    color: #4b6179; /* Dark blue text */
     transition: border 0.3s ease;
 }
 
 #message:hover {
-    border: 2px solid #228B22; /* Forest green */
-    box-shadow: 0px 0px 5px #228B22; /* Soft green glow */
+    border: 2px solid #5ca0d3; /* Pastel blue */
+    box-shadow: 0px 0px 5px #5ca0d3; /* Soft blue glow */
 }
 
 #sendBtn {
-    background-color: #32cd32; /* Lime green */
+    background-color: #8ac7e8; /* Soft blue */
     color: white;
     border: none;
     padding: 8px 16px;
@@ -142,7 +146,7 @@ body {
 }
 
 #sendBtn:hover {
-    background-color: #228B22; /* Darker green */
+    background-color: #5ca0d3; /* Pastel blue */
 }
 
 /* Additional info area */
@@ -152,19 +156,19 @@ body {
     height: 50vh;
     width: 50vw;
     border-radius: 10px;
-    background-color: #e0f2e0; /* Very light green */
-    color: #2e2e2e; /* Dark grey text */
+    background-color: #e0f3ff; /* Very light blue */
+    color: #4b6179; /* Dark blue text */
     overflow: auto;
     padding: 20px;
     margin: 20px auto;
-    border: 1px solid #98fb98; /* Pale green border */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    border: 1px solid #8ac7e8; /* Soft blue border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
     transition: box-shadow 0.3s ease-in;
 }
 
 #info:hover {
     display: flex;
-    box-shadow: 0px 0px 10px #32cd32; /* Highlight effect */
+    box-shadow: 0px 0px 10px #8ac7e8; /* Highlight effect */
 }
 
 /* Icons section */
@@ -177,27 +181,36 @@ body {
 }
 
 #icons a:hover {
-    /* height: 30px; */
-    filter: drop-shadow(0px 0px 4px #022d13); /* Bright green shadow */
-    /* border-radius: 50%; Rounded edges */
+    filter: drop-shadow(0px 0px 4px #5ca0d3); /* Bright pastel blue shadow */
 }
 
+
+#credits{
+    color: #4b6179;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#credits a{
+    color: #306b98;
+    
+}
 /* Credit name link */
 #credit-name {
     text-decoration: none;
-    color: #006400; /* Dark green */
+    color: #4b6179; /* Dark blue */
 }
 
 #credit-name:hover {
     text-decoration: none;
-    color: #228B22; /* Forest green */
+    color: #5ca0d3; /* Pastel blue */
 }
 
 /* Enter chat button */
 #enter-chatapp-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #32cd32; /* Lime green */
+    background-color: #8ac7e8; /* Soft blue */
     color: white;
     border: none;
     border-radius: 5px;
@@ -206,15 +219,131 @@ body {
 }
 
 #enter-chatapp-btn:hover {
-    background-color: #228B22; /* Forest green */
-    color: #e0f2e0; /* Light green text */
+    background-color: #5ca0d3; /* Pastel blue */
+    color: #e0f3ff; /* Very light blue text */
 }
+
+/* Active users count */
 #active-users-count {
-    /* Adjust the right position as needed */
-    background-color: rgba(246, 246, 246, 0.463) ;
+    text-align: center;
+    background-color: rgba(224, 243, 255, 0.808); /* Transparent very light blue */
     backdrop-filter: blur(3px);
-    padding: 5px; /* Padding for the element */
-    border-radius: 5px; /* Border radius for rounded corners */
-    /* box-shadow: 0 0 10px rgba(, 0, 0, 0.1); Optional: Add a box shadow for a nice effect */
-    z-index: 1000; /* Ensure the element appears above other content */
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Common message area */
+#commonMessageArea {
+    display: flex;
+    flex-direction: column;
+    margin: 1px;
+    max-width: 70%;
+    overflow-wrap: anywhere;
+}
+
+
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    height: 8px; /* Height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background: #e0f3ff; /* Light pastel blue background */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4b6179; /* Dark blue color for the thumb */
+    border-radius: 0px; /* Sharp edges */
+    border: 2px solid #e0f3ff; /* Space around the thumb to make it appear thinner */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #32475b; /* Slightly darker blue on hover */
+}
+
+/* Optional: For compatibility with Firefox */
+* {
+    scrollbar-width: thin; /* Make the scrollbar thin */
+    scrollbar-color: #4b6179 #e0f3ff; /* Thumb color and track color */
+}
+
+
+#Messages::-webkit-scrollbar {
+    width: 8px;
+    display: none;
+}
+
+#Messages::-webkit-scrollbar-track {
+    background: #e0f3ff;
+}
+
+#Messages::-webkit-scrollbar-thumb {
+    background-color: #4b6179;
+    border-radius: 10px 0px 0px 0px;
+    border: 2px solid #e0f3ff;
+}
+
+#Messages::-webkit-scrollbar-thumb:hover {
+    background-color: #32475b;
+}
+
+#Messages {
+    scrollbar-width: thin;
+    scrollbar-color: #4b6179 #e0f3ff;
+}
+
+.Outerbox{
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#user-names{
+    padding: 0%;
+}
+
+#user-list{
+  overflow: auto;
+  background: #b8daf4;
+  height: 50vh;
+  width: 30vw;
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #8ac7e8a8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 0px 2px rgba(95, 201, 250, 0.777); */
+}
+#user-list ul{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#user-list ul li{
+    padding: 5px;
+    width: 90%;
+    border-radius: 5px;
+    
+    /* text-align: start; */
+    color: #44596f;
+    text-transform: capitalize;
+}
+
+#user-list ul li:nth-child(odd){
+    background-color: rgb(161, 203, 231) ;
+    border:1px solid rgb(161, 181, 231);
+}
+#user-list ul li:nth-child(even){
+    background-color: rgb(161, 181, 231) ;
+    border:1px solid rgb(161, 203, 231) ;
 }

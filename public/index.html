@@ -18,115 +18,120 @@
     <header id="nav-bar">
         <table>
             <tbody>
-                <td>
-                    <h1 id="heading">Chat</h1>
-                </td>
-
-                <td>
-                    <h1 id="heading">Global</h1>
-                </td>
+                <tr>
+                    <td>
+                        <h1 id="heading">Chat</h1>
+                    </td>
+                    <td>
+                        <h1 id="heading">Global</h1>
+                    </td>
+                </tr>
             </tbody>
         </table>
-
     </header>
-    <!-- Active Users Count Section -->
-
 
     <h3 id="uname-display"></h3>
-    <!-- <hr> -->
     <br>
 
     <div id="info" style="text-align: center; margin-top: 50px;">
         <h2 style="margin-bottom: 10px;">Please Enter Your Name:</h2>
-        <input type="text" id="uname" placeholder="e.g., Ram" required
+        <input type="text" id="uname" placeholder="eg:Human" required
             style="padding: 8px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc;">
         <br><br>
-        <button onclick="getName()" id="enter-chatapp-btn">Enter
-            Chat App</button>
-        <br>
-        <br>
+        <button onclick="getName()" id="enter-chatapp-btn">Enter Chat App</button>
+        <br><br>
         <div id="credits" style="color: #999;">
             Made By | <a target="_blank" id="credit-name" href="https://www.linkedin.com/in/het-patel-7ba27924b">Het
                 Patel</a>
         </div>
         <p style="color: #999">Let's Connect</p>
         <div id="icons">
-            <a target="_blank" href="https://www.linkedin.com/in/het-patel-7ba27924b" target="_blank"
-                style="color: #6cc4f4;">
+            <a target="_blank" href="https://www.linkedin.com/in/het-patel-7ba27924b" style="color: #6cc4f4;">
                 <img src="https://res.cloudinary.com/dz9sl6uan/image/upload/f_auto,q_auto/v1/ChatAPP/h9xppuxouy4kvdjapjbi"
                     height="25px" alt="LinkedIn">
             </a>
-            <a target="_blank" href="https://www.instagram.com/patelhet_4705" target="_blank" style="color: #6cc4f4;">
+            <a target="_blank" href="https://www.instagram.com/patelhet_4705" style="color: #6cc4f4;">
                 <img src="https://res.cloudinary.com/dz9sl6uan/image/upload/f_auto,q_auto/v1/ChatAPP/fl6anitz7ymrrixjoq2q"
-                    height="25px" alt="instagram">
+                    height="25px" alt="Instagram">
             </a>
-            <a target="_blank" href="https://github.com/Het4705" target="_blank" style="color: #6cc4f4;">
-                <img src="https://res.cloudinary.com/dz9sl6uan/image/upload/f_auto,q_auto/v1/ChatAPP/imlfsfcd6vamk62idyzz "
-                    height="35px" alt="github">
+            <a target="_blank" href="https://github.com/Het4705" style="color: #6cc4f4;">
+                <img src="https://res.cloudinary.com/dz9sl6uan/image/upload/f_auto,q_auto/v1/ChatAPP/imlfsfcd6vamk62idyzz"
+                    height="35px" alt="GitHub">
             </a>
-            <a target="_blank" href="https://leetcode.com/Patel_Het/" target="_blank" style="color: #6cc4f4;">
+            <a target="_blank" href="https://leetcode.com/Patel_Het/" style="color: #6cc4f4;">
                 <img src="https://res.cloudinary.com/dz9sl6uan/image/upload/f_auto,q_auto/v1/ChatAPP/p3wnmu9srcedhawv0nrg"
-                    height="25px" alt="leetCode">
+                    height="25px" alt="LeetCode">
             </a>
         </div>
     </div>
 
+    <p id="active-users-count">
+        Active Users: <span id="user-count">0</span>
+    </p>
 
-    <div id="main-box">
+    <div class="Outerbox">
 
-        <p id="active-users-count">
-            Active Users: <span id="user-count">0</span>
-        </p>
-        <div id="Messages">
 
+        <div id="user-list">
+            <h3>Connected Users</h3>
+            <ul type="none" id="user-names"></ul>
         </div>
 
-        <br>
-        <div id="send-message">
+        <div id="main-box" style="display: none;">
 
-            <input id="message" type="text" placeholder="enter message">
-            <button id="sendBtn">send</button>
+
+            <div id="Messages"></div>
+            <br>
+            <div id="send-message">
+                <input id="message" required type="text" placeholder="Enter message">
+                <button id="sendBtn">Send</button>
+            </div>
+            <br>
+            <div id="credits">
+                Made By | <a target="_blank" style="text-decoration: none; margin-left:1px;"
+                    href="https://www.linkedin.com/in/het-patel-7ba27924b">Het Patel</a>
+            </div>
         </div>
-        <br>
-        <div id="credits" style="color: #080000;">
-            Made By | <a target="_blank" style="text-decoration: none;text-decoration: none;
-            color:white;" href="https://www.linkedin.com/in/het-patel-7ba27924b">Het Patel</a>
-        </div>
+
     </div>
 
-
-
-    <!-- ^  Script Section   -->
-
-    <!-- this below line will provide a script to this client -->
+    <!-- Include Socket.IO library -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var name = "Mehman";
+        var name = "Guest";
+        const socket = io();
 
         getName = () => {
-            document.getElementById("main-box").style.display = "flex";
-            name = document.getElementById("uname").value;
+            name = document.getElementById("uname").value.trim();
+            if (name === "") {
+                alert("Please enter your name to proceed.");
+                return;
+            }
+
+            document.getElementById("main-box").style.display = "block";
+            document.getElementById("user-list").style.display = "flex";
             document.getElementById("info").style.display = "none";
             document.getElementById("uname-display").innerText = "Welcome " + name;
 
             // Send the user's name to the server
-            socket.emit('new-user', name);
+            socket.emit('set-username', name);
         };
 
-        const socket = io();
         const sendBtn = document.getElementById('sendBtn');
         const messageInput = document.getElementById('message');
         const messageContainer = document.getElementById('Messages');
-        const userCount = document.getElementById('user-count'); // For active users count
+        const userCount = document.getElementById('user-count');
+        const userNamesList = document.getElementById('user-names');
 
         function scrollMessageContainerToBottom() {
             messageContainer.scrollTop = messageContainer.scrollHeight;
         }
 
+        // Listen for new messages
         socket.on("message", (message) => {
             let html;
             if (name !== message[1]) {
-                html = "<div id='rightSide'><div id='commonMessageArea'><span id='other'><b>" + message[1] + "</b></span> : <span id='user-message'>" + message[0] + "</span></div></div>";
+                html = "<div id='rightSide'><div id='commonMessageArea'><span id='other'><b>" + message[1] + "</b></span><span id='user-message'>" + message[0] + "</span></div></div>";
             } else {
                 html = "<div id='leftSide'><div id='commonMessageArea'><span id='own-message'>" + message[0] + "</span></div></div>";
             }
@@ -134,26 +139,40 @@
             scrollMessageContainerToBottom();
         });
 
+        // Send a message
         sendBtn.addEventListener("click", (e) => {
-            const message = [messageInput.value, name];
+            const messageText = messageInput.value.trim();
+            if (messageText === "") {
+                alert("Please enter a message to send.");
+                return;
+            }
+
+            const message = [messageText, name];
             socket.emit("user-msg", message);
             messageInput.value = ''; // Clear the input field after sending
         });
 
         document.getElementById("message").addEventListener("keypress", (event) => {
-            if (event.keyCode === 13) {
-                document.getElementById("sendBtn").click();
+            if (event.keyCode === 13) { // Enter key
+                sendBtn.click();
             }
         });
 
-        // Listen for updates to the user count from the server
-        console.log("here")
+        // Listen for updates to the user count
         socket.on('update-user-count', (count) => {
-            console.log(count)
-            userCount.textContent = count; // Update the displayed count
+            userCount.textContent = count;
+        });
+
+        // Listen for updates to the user list
+        socket.on('update-user-list', (users) => {
+            userNamesList.innerHTML = ''; // Clear the list
+            users.forEach(user => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${user.username}`;
+                userNamesList.appendChild(listItem);
+            });
         });
     </script>
-
 </body>
 
 </html>
